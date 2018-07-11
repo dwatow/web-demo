@@ -5,8 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style media="screen">
+    body>div {
+      width: 300px;
+      height: 300px;
+      border: solid;
+      font-size: 0;
+    }
+    body>div::after {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      width: 1px;
+      background-color: red;
+    }
+    body>div>div {
+      font-size: 1rem;
+      display: inline-block;
+      width: 200px;
+      border: solid blue;
+      text-align: left;
+    }
+
+    body>div:nth-child(3n+1) {
+      text-align: left;
+    }
+    body>div:nth-child(3n+2) {
+      text-align: center;
+    }
+    body>div:nth-child(3n) {
+      text-align: right;
+    }
+    .top>div {
+      vertical-align: top;
+    }
+    .top::after {
+      vertical-align: top;
+    }
+
+    .middle>div {
+      vertical-align: middle;
+    }
+    .middle::after {
+      vertical-align: middle;
+    }
+    .bottom>div {
+      vertical-align: bottom;
+    }
+    .bottom::after {
+      vertical-align: bottom;
+    }
+  </style>
 </head>
 <body>
-  這是 display: inline block 的作業
+  <div class="top">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="top">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="top">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="middle">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="middle">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="middle">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="bottom">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="bottom">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <div class="bottom">
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+  </div>
+  <script type="text/javascript">
+    let elements = document.querySelectorAll('body>div>div')
+    elements.forEach(element => {
+      let display = getComputedStyle(element).display
+      let beforeHeight = element.clientHeight
+      element.textContent = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit,'
+      let afterHeight = element.clientHeight
+      let code = 100
+      if (display.includes([code + 5, code + 10, code + 8, code + 5, code + 10, code + 1].map(code => String.fromCharCode(code)).join("")) && beforeHeight !== afterHeight) console.log("成功")
+      else console.log("失敗，再繼續加油")
+    })
+  </script>
 </body>
 </html>

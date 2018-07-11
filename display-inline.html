@@ -10,12 +10,13 @@
       width: 300px;
       height: 300px;
       border: solid;
+      font-size: 0;
     }
     body>div::after {
       content: '';
       display: inline-block;
       height: 100%;
-      width: 1px;
+      width: 0;
       background-color: red;
     }
     body>div>div {
@@ -23,6 +24,7 @@
       width: 200px;
       border: solid blue;
       text-align: left;
+      font-size: 1rem;
     }
 
     body>div:nth-child(3n+1) {
